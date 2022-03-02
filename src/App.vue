@@ -50,8 +50,16 @@ export default {
 };
 </script>
 
-<style scoped>
-.task-list {
-  list-style: none;
-}
+<style >
+  * {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+ .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
 </style>
