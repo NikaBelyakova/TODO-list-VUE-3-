@@ -83,6 +83,7 @@ export default {
         height: 40px;
         outline: none;
         transition: 0.2s;
+        cursor: pointer;
     }
     
     .btn:hover {

@@ -10,9 +10,12 @@
           <input type="checkbox" @change="$emit('itemDone', task)" />
           <span>{{ task.title }}</span>
         </div>
-        <button class="btn-remove" @click="$emit('removeItem', task.id)">
+        <div class="btns">
+          <button class="btn-edit">Edit</button>
+          <button class="btn-remove" @click="$emit('removeItem', task.id)">
           Remove
-        </button>
+          </button>
+        </div>
       </li>
     </ul>
 
@@ -89,8 +92,12 @@ export default {
     input[type="checkbox"] + span {
         padding-left: 10px;
     }
+
+    .btn-edit {
+      margin-right: 10px;
+    }
     
-    .btn-remove {
+    .btn-remove, .btn-edit {
         border: 1px solid #2a2f36;
         font-size: 12px;
         border: 2px solid #2a2f36;
@@ -102,6 +109,7 @@ export default {
         font-size: 12px;
         outline: none;
         transition: 0.2s;
+        cursor: pointer;
     }
     
     .btn-remove:hover {
