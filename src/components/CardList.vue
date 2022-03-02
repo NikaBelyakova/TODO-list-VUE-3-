@@ -41,7 +41,7 @@
 export default {
   props: {
     items: Array,
-    itemsDone: Array
+    itemsDone: Function
   },
   data() {
     return {};

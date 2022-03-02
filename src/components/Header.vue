@@ -21,6 +21,7 @@ export default {
     addTask() {
       if (this.valueInput === "") {
         alert("Заполните поле");
+        return
       }
       this.$emit("add", this.valueInput);
       this.valueInput = "";

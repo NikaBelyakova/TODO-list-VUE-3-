@@ -1,6 +1,6 @@
 <template>
   <Header @add="addTask" />
-  <CardList @remove-item="removeTask" @item-done="moveToDoneTask" :items="items" :itemsDone="itemsDone" />
+  <CardList @remove-item="removeTask" @item-done="toggleCompletion" :items="getUncompleteItems()" :itemsDone="getCompleteItems()" />
 </template>
 
 <script>
@@ -17,9 +17,6 @@ export default {
       items: [
         { title: "Задача первая", complete: false, id: Date.now() },
         { title: "Задача вторая", complete: false, id: Date.now() + 1 },
-      ],
-      itemsDone: [
-        { title: "Задача третья", complete: true, id: Date.now() + 2 },
       ]
     };
   },
@@ -32,19 +29,16 @@ export default {
       });
     },
     removeTask(id) {
-        this.items = this.items.filter( item => item.id !== id);
-        this.itemsDone = this.itemsDone.filter( item => item.id !== id);
+    this.items = this.items.filter( item => item.id !== id);
     },
-    moveToDoneTask (item) {
-        item.complete = !item.complete;
-        
-        if (item.complete) {
-          this.itemsDone.push(item);
-          this.items = this.items.filter(item => item.complete === false);
-        } else {
-          this.items.push(item);
-          this.itemsDone = this.itemsDone.filter(item => item.complete === true);
-        }
+    getUncompleteItems() {
+    return this.items.filter(item => !item.complete)
+    },
+    getCompleteItems() {
+    return this.items.filter(item => item.complete)
+    },
+    toggleCompletion (item) {
+    item.complete = !item.complete;
     }
   },
 };
